@@ -33,11 +33,11 @@ class MusicModel {
 
 List<MusicModel> billieEilishSongs = [
   MusicModel(
-      name: "all the good girls go to hell",
+      name: "All the Good Girls Go to Hell",
       asset: "assets/Billie Eilish all the good girls go to hell.mp3"
   ),
   MusicModel(
-      name: "bad guy",
+      name: "Bad Guy",
       asset: "assets/Billie Eilish bad guy.mp3"
   ),
   MusicModel(
@@ -49,31 +49,31 @@ List<MusicModel> billieEilishSongs = [
       asset: "assets/Billie Eilish Bored.mp3"
   ),
   MusicModel(
-      name: "bury a friend",
+      name: "Bury a Friend",
       asset: "assets/Billie Eilish bury a friend.mp3"
   ),
   MusicModel(
-      name: "everything i wanted",
+      name: "Everything I Wanted",
       asset: "assets/Billie Eilish everything i wanted.mp3"
   ),
   MusicModel(
-      name: "hostage",
+      name: "Hostage",
       asset: "assets/Billie Eilish hostage.mp3"
   ),
   MusicModel(
-      name: "idontwannabeyouanymore (Vertical Video)",
+      name: "Idontwannabeyouanymore",
       asset: "assets/Billie Eilish idontwannabeyouanymore Vertical Video.mp3"
   ),
   MusicModel(
-      name: "Khalid lovely",
+      name: "Lovely (with Khalid)",
       asset: "assets/Billie Eilish Khalid lovely.mp3"
   ),
   MusicModel(
-      name: "my future",
+      name: "My Future",
       asset: "assets/Billie Eilish my future.mp3"
   ),
   MusicModel(
-      name: "No Time To Die",
+      name: "No Time to Die",
       asset: "assets/Billie Eilish No Time To Die.mp3"
   ),
   MusicModel(
@@ -81,7 +81,7 @@ List<MusicModel> billieEilishSongs = [
       asset: "assets/Billie Eilish Ocean Eyes.mp3"
   ),
   MusicModel(
-      name: "ROSALÍA Lo Vas A Olvidar",
+      name: "Lo Vas a Olvidar (with Rosalía)",
       asset: "assets/Billie Eilish ROSALÍA Lo Vas A Olvidar.mp3"
   ),
   MusicModel(
@@ -89,19 +89,21 @@ List<MusicModel> billieEilishSongs = [
       asset: "assets/Billie Eilish Therefore I Am.mp3"
   ),
   MusicModel(
-      name: "watch",
+      name: "Watch",
       asset: "assets/Billie Eilish watch.mp3"
   ),
   MusicModel(
-      name: "when the partys over",
+      name: "When the Party's Over",
       asset: "assets/Billie Eilish when the partys over.mp3"
   ),
   MusicModel(
-      name: "xanny",
+      name: "Xanny",
       asset: "assets/Billie Eilish xanny.mp3"
   ),
   MusicModel(
-      name: "you should see me in a crown (Vertical Video)",
+      name: "You Should See Me in a Crown",
       asset: "assets/Billie Eilish you should see me in a crown Vertical Video.mp3"
   ),
 ];
+
+
