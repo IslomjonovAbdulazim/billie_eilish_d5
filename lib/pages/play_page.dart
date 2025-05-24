@@ -1,4 +1,5 @@
 import 'package:billie_eilish_d5/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -73,11 +74,58 @@ class _PlayPageState extends State<PlayPage> {
                         player.seek(Duration(seconds: value.toInt()));
                       },
                     );
-                  }
+                  },
                 ),
 
                 // controller
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        final sec = player.position.inSeconds - 10;
+                        if (sec > 0) {
+                          player.seek(Duration(seconds: sec));
+                        } else {
+                          player.seek(Duration(seconds: 0));
+                        }
+                      },
+                      child: Icon(Icons.replay_10, size: 30),
+                    ),
+                    SizedBox(width: 10),
+                    StreamBuilder<bool>(
+                        stream: player.playingStream,
+                        builder: (context, snapshot) {
+                          final isPlaying = snapshot.data == true;
+                          return CupertinoButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              if (isPlaying) {
+                                player.pause();
+                              } else {
+                                player.play();
+                              }
+                            },
+                            child: Icon(
+                              isPlaying ? Icons.pause : Icons.play_arrow,
+                              size: 30,
+                            ),
+                          );
+                        }),
+                    CupertinoButton(
+                      onPressed: () {
+                        final sec = player.position.inSeconds + 10;
+                        if (sec > duration.inSeconds) {
+                          player.seek(duration);
+                        } else {
+                          player.seek(Duration(seconds: sec));
+                        }
+                      },
+                      child: Icon(Icons.forward_10, size: 30),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
