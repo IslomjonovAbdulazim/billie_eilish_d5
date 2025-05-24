@@ -24,8 +24,6 @@ class _PlayPageState extends State<PlayPage> {
 
   void setUp() async {
     await player.setAsset(widget.music.asset);
-    duration = player.duration ?? duration;
-    setState(() {});
   }
 
   String format(Duration dur) {
@@ -65,13 +63,13 @@ class _PlayPageState extends State<PlayPage> {
                 StreamBuilder<Duration>(
                   stream: player.positionStream,
                   builder: (context, snapshot) {
-                    final pos = snapshot.data?.inSeconds ?? 0;
+                    final pos = snapshot.data?.inMilliseconds ?? 0;
                     return Slider(
                       value: pos.toDouble(),
                       min: 0,
-                      max: duration.inSeconds.toDouble(),
+                      max: player.duration?.inMilliseconds.toDouble() ?? 0,
                       onChanged: (value) {
-                        player.seek(Duration(seconds: value.toInt()));
+                        player.seek(Duration(milliseconds: value.toInt()));
                       },
                     );
                   },
@@ -88,7 +86,12 @@ class _PlayPageState extends State<PlayPage> {
                       },
                     ),
                     Spacer(),
-                    Text(format(duration)),
+                    StreamBuilder<Duration?>(
+                        stream: player.durationStream,
+                        builder: (context, snapshot) {
+                          final dur = snapshot.data ?? Duration.zero;
+                          return Text(format(dur));
+                        }),
                   ],
                 ),
                 SizedBox(height: 10),
@@ -100,11 +103,11 @@ class _PlayPageState extends State<PlayPage> {
                     CupertinoButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
-                        final sec = player.position.inSeconds - 10;
+                        final sec = player.position.inMilliseconds - 10 * 1000;
                         if (sec > 0) {
-                          player.seek(Duration(seconds: sec));
+                          player.seek(Duration(milliseconds: sec));
                         } else {
-                          player.seek(Duration(seconds: 0));
+                          player.seek(Duration(milliseconds: 0));
                         }
                       },
                       child: Icon(Icons.replay_10, size: 30),
@@ -131,11 +134,11 @@ class _PlayPageState extends State<PlayPage> {
                         }),
                     CupertinoButton(
                       onPressed: () {
-                        final sec = player.position.inSeconds + 10;
-                        if (sec > duration.inSeconds) {
+                        final sec = player.position.inMilliseconds + 10 * 1000;
+                        if (sec > duration.inMilliseconds) {
                           player.seek(duration);
                         } else {
-                          player.seek(Duration(seconds: sec));
+                          player.seek(Duration(milliseconds: sec));
                         }
                       },
                       child: Icon(Icons.forward_10, size: 30),
