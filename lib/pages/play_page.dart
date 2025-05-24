@@ -42,9 +42,18 @@ class _PlayPageState extends State<PlayPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(widget.music.name),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20),
+          child: Center(
+            child: Column(
+              children: [],
+            ),
+          ),
         ),
       ),
     );
