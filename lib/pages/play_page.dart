@@ -51,7 +51,34 @@ class _PlayPageState extends State<PlayPage> {
           padding: EdgeInsets.all(20),
           child: Center(
             child: Column(
-              children: [],
+              children: [
+                // change
+                Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                  ),
+                ),
+
+                // slider
+                StreamBuilder<Duration>(
+                  stream: player.positionStream,
+                  builder: (context, snapshot) {
+                    final pos = snapshot.data?.inSeconds ?? 0;
+                    return Slider(
+                      value: pos.toDouble(),
+                      min: 0,
+                      max: duration.inSeconds.toDouble(),
+                      onChanged: (value) {
+                        player.seek(Duration(seconds: value.toInt()));
+                      },
+                    );
+                  }
+                ),
+
+                // controller
+
+              ],
             ),
           ),
         ),
