@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+
+class PlayPage extends StatefulWidget {
+  const PlayPage({super.key});
+
+  @override
+  State<PlayPage> createState() => _PlayPageState();
+}
+
+class _PlayPageState extends State<PlayPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+        ),
+      ),
+    );
+  }
+}
